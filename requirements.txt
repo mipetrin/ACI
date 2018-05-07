@@ -1,0 +1,4 @@
+acitoolkit>=0.4
+requests>=2.18.4
+tabulate>=0.8.1
+spur>=0.3.20
