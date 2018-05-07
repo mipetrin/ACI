@@ -1,6 +1,8 @@
 Created by Michael Petrinovic 2018
 
-Sample ACI Python Scripts for Cisco Live Melbourne 2018: BRKDCN-2602
+Sample ACI Python Scripts for
+* Cisco Live Melbourne 2018: BRKDCN-2602
+* Cisco Live USA 2018: BRKDCN-2011
 
 Sample Usage:
 
