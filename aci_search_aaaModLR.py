@@ -12,6 +12,8 @@ To Do:
     * Doesn't take into consideration a large dataset. Assuming only wants night before. Otherwise results would
         exceed maximum and require pagination in the resulting dataset
     * Keep count of which user's are making the most changes
+        - TopN users (in total)
+        - TopN users (creation / deletion / modification)
 
 Michael Petrinovic 2018
 """
@@ -96,6 +98,7 @@ def main():
 
     total_count = int(response['totalCount']) # Need to change to Int as returned in unicode
     imdata = response['imdata']
+    internal_count = 0 #Keep track of the number of internal objects (Rs or Rt)
 
     aaaModLR = [] # Put into a list that will be printed by Tabulate
 
@@ -111,6 +114,8 @@ def main():
             # Hide these by default unless user wishes to see them as well
             if re.search("^R[s|t][A-Z]", entry["aaaModLR"]["attributes"]["descr"]):
                 internal_obj = True
+                #Count the number of internal objects
+                internal_count += 1
 
             if args.internal:
                 aaaModLR.append((entry["aaaModLR"]["attributes"]["created"],
@@ -140,6 +145,14 @@ def main():
             headers = ["Timestamp", "ID", "User", "Action", "Description", "Affected Object"]
 
         print (tabulate(aaaModLR, headers, tablefmt="simple"))
+
+        print ("=" * 80)
+        print ("Total Objects (inc. internal): " + str(total_count))
+        if args.internal:
+            print ("Total Objects (displayed): " + str(total_count))
+        else:
+            print ("Total Objects (displayed): " + str(total_count - internal_count))
+        print ("=" * 80)
 
 if __name__ == '__main__':
     main()
@@ -176,4 +189,8 @@ FROM MY TESTING. The list of URLs used for specific actions
     # user + action + start time/date + end time/date
     # &query-target-filter=and(wcard(aaaModLR.user, "mike"),or(eq(aaaModLR.ind, "creation")),and(lt(aaaModLR.created, "2018-02-22"),gt(aaaModLR.created, "2018-02-20")))
 
+
+Similarly, to capture via moquery natively on the CLI, for the all option (start date, end date AND specific user)
+
+apic> moquery -c aaaModLR -x order-by="aaaModLR.created|desc" query-target-filter=and\(gt\(aaaModLR.created,\"2018-02-26\"\),lt\(aaaModLR.created,\"2018-02-28\"\),wcard\(aaaModLR.user,\"mipetrin\"\)\)
 '''
