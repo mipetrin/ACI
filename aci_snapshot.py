@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 """
-Simple script to allow user to utilise the Snapshot manager and take configuration backup to a remote location
+Simple script to allow user to utilise the Snapshot manager and take configuration backup to either the APIC or a remote location
 
 NOTE: This script simply pushes the JSON config to the Snapshot manager on the APIC.
 The APIC then takes over to execute the request
