@@ -101,6 +101,7 @@ def main():
     internal_count = 0 #Keep track of the number of internal objects (Rs or Rt)
 
     aaaModLR = [] # Put into a list that will be printed by Tabulate
+    users = {} # Dictionary to keep track of users and the type of aaaModLR (creation/deletion/modification)
 
     if total_count == 0:
         print ("Query returned no results. Try modifying your filters\n")
@@ -116,6 +117,21 @@ def main():
                 internal_obj = True
                 #Count the number of internal objects
                 internal_count += 1
+
+            # Currently not taking into account the internal objects for user
+            current_user = entry["aaaModLR"]["attributes"]["user"]
+            current_action = entry["aaaModLR"]["attributes"]["ind"]
+
+            if not current_user in users:
+                #initialize the user and found action (creation/deletion/modification)
+                users[current_user] = {current_action:1}
+            else:
+                if not current_action in users[current_user]:
+                    #new action found (creation/deletion/modification)
+                    users[current_user].update({current_action:1})
+                else:
+                    current_value = users[current_user][current_action]
+                    users[current_user].update({current_action:current_value + 1})
 
             if args.internal:
                 aaaModLR.append((entry["aaaModLR"]["attributes"]["created"],
@@ -153,6 +169,14 @@ def main():
         else:
             print ("Total Objects (displayed): " + str(total_count - internal_count))
         print ("=" * 80)
+
+        #### Need to pretty this up
+        #### TO DO: 
+        for user_name, user_info in users.items():
+            print ("User: ", str(user_name))
+
+            for key in user_info:
+                print (str(key) + ": ", str(user_info[key]))
 
 if __name__ == '__main__':
     main()
