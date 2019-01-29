@@ -13,6 +13,7 @@ Simple application to display details about endpoints
 import acitoolkit.acitoolkit as aci
 from tabulate import tabulate
 import requests
+import time
 
 def main():
     """
@@ -32,6 +33,9 @@ def main():
     if not resp.ok:
         print('%% Could not login to APIC')
         return
+
+    # Start time count at this point, otherwise takes into consideration the amount of time taken to input the password
+    start_time = time.time()
 
     # Download all of the interfaces and store the data as tuples in a list
     data = []
@@ -53,6 +57,13 @@ def main():
     # Display the data downloaded
     print tabulate(data, headers=["MACADDRESS", "MAC VENDOR", "IPADDRESS", "INTERFACE",
                                   "ENCAP", "TENANT", "APP PROFILE", "EPG"], tablefmt="simple")
+
+    print ("#" * 80)
+    finish_time = time.time()
+    print ("Started @ {}".format(time.asctime(time.localtime(start_time))))
+    print ("Ended @ {}".format(time.asctime(time.localtime(finish_time))))
+    print("--- Total Execution Time: %s seconds ---" % (finish_time - start_time))
+    print ("#" * 80)
 
 if __name__ == '__main__':
     try:

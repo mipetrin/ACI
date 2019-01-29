@@ -19,7 +19,6 @@ Michael Petrinovic 2018
 """
 import acitoolkit.acitoolkit as aci
 
-
 """
 Simple application that logs on to the APIC, pull all CDP neighbours,
 and display in text table format
@@ -53,6 +52,9 @@ def main():
         return
     else:
         print('%% Login to APIC: Successful')
+
+    # Start time count at this point, otherwise takes into consideration the amount of time taken to input the password
+    start_time = time.time()
 
     print ("Proceeding to next step...")
     print ("Retrieving node information...")
@@ -113,7 +115,12 @@ def main():
                                            "Neighbour Platform",
                                            "Neighbour Interface"]))
 
-    print("--- Execution Time: %s seconds ---" % (time.time() - start_time))
+    print ("#" * 80)
+    finish_time = time.time()
+    print ("Started @ {}".format(time.asctime(time.localtime(start_time))))
+    print ("Ended @ {}".format(time.asctime(time.localtime(finish_time))))
+    print("--- Total Execution Time: %s seconds ---" % (finish_time - start_time))
+    print ("#" * 80)
 
 if __name__ == '__main__':
     main()

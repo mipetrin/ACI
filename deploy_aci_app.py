@@ -35,6 +35,7 @@
 """
 
 import acitoolkit.acitoolkit as aci
+import time
 
 def main():
 
@@ -60,6 +61,9 @@ def main():
     if not resp.ok:
         print('%% Could not login to APIC')
         return
+
+    # Start time count at this point, otherwise takes into consideration the amount of time taken to input the password
+    start_time = time.time()
 
     count = 1
     while (count <= total_amount):
@@ -150,6 +154,13 @@ def main():
         print 'Successfully pushed total object count to the APIC:', total_amount
 
     print "=" * 80
+
+    print ("#" * 80)
+    finish_time = time.time()
+    print ("Started @ {}".format(time.asctime(time.localtime(start_time))))
+    print ("Ended @ {}".format(time.asctime(time.localtime(finish_time))))
+    print("--- Total Execution Time: %s seconds ---" % (finish_time - start_time))
+    print ("#" * 80)
 
 if __name__ == '__main__':
     main()

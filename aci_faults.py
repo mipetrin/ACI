@@ -13,6 +13,7 @@ Michael Petrinovic 2018
 import acitoolkit.acitoolkit as aci
 from operator import itemgetter
 from tabulate import tabulate
+import time
 
 def query_fault(handle, sev, sort):
     '''
@@ -72,6 +73,9 @@ def main():
         print('%% Could not login to APIC')
         return
 
+    # Start time count at this point, otherwise takes into consideration the amount of time taken to input the password
+    start_time = time.time()
+
     # Available severity codes for ACI Fault Instances
     fault_severity = ["critical", "major", "minor", "warning", "info", "cleared"]
 
@@ -108,6 +112,12 @@ def main():
         print (fault_summary + " = " + str(fault_severity_count[fault_summary]))
     print "=" * 80
 
+    print ("#" * 80)
+    finish_time = time.time()
+    print ("Started @ {}".format(time.asctime(time.localtime(start_time))))
+    print ("Ended @ {}".format(time.asctime(time.localtime(finish_time))))
+    print("--- Total Execution Time: %s seconds ---" % (finish_time - start_time))
+    print ("#" * 80)
 
 if __name__ == '__main__':
     try:
