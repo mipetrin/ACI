@@ -1,6 +1,8 @@
-Simple application that will connect to the ACI Fabric and create a Snapshot of the Fabric. It will be stored either on the APIC or in a pre-configured "remote" location
+Simple script to allow user to utilise the Snapshot manager and take configuration backup to either the APIC or a remote location
 
-> NOTE that the Remote Location must already exist and be correctly configured within the APIC. You then must call it exactly how it is displayed in the APIC
+> This script simply pushes the JSON config to the Snapshot manager on the APIC. The APIC then takes over to execute the request
+
+> NOTE that the Remote Location must already exist and be correctly configured within the APIC. You then change the path within the Script at this location: "tnFileRemotePathName"
 
 It can be executed via the following:
 * -u is your APIC cluster
