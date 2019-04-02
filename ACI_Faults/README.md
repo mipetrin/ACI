@@ -1,14 +1,18 @@
-Created by Michael Petrinovic 2018
+This script will make the relevant API calls in order to extract the list of ACI Faults currently active within an ACI Environment.
 
-This script will make the relevant API calls in order to extract the list of ACI Faults currently active within an ACI Environment. 
+> It will then produce a simple report for you, that includes all the faults, what severity, how many occurrences, possible causes, etc.
 
-It will then produce a simple report for you, that includes all the faults, what severity, how many occurrences, possible causes, etc.
-
-It can be executed via the following (where -u is your APIC cluster and -l is your login username)
+It can be executed via the following:
+* -u is your APIC cluster
+* -l is your login username
 
 ```YAML
 # python aci_faults.py -u https://10.66.80.242 -l mipetrin
 ```
+
+
+Created by Michael Petrinovic 2018
+
 
 WARNING:
 
