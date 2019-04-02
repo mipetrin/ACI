@@ -15,6 +15,8 @@ It can be executed via the following:
 
 ```
 
+> NOTE the typo on purpose for the --delete flag above. So as to note accidently delete your tenant
+
 
 Created by Michael Petrinovic 2018
 
