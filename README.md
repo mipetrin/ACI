@@ -1,4 +1,4 @@
-Sample ACI Python Scripts from various presentations that I do at Cisco Live and other locations:
+Sample ACI Python Scripts from various presentations that I do at Cisco Live and other events, including Customer Presentations/Demos, DevNet, DevNet Express Events, Internal Training that I feel the demo should be shared, etc:
 
 * Cisco Live Melbourne 2018: BRKDCN-2602
 * Cisco Live Orlando 2018: BRKDCN-2011
@@ -6,7 +6,7 @@ Sample ACI Python Scripts from various presentations that I do at Cisco Live and
 * Cisco Live Melbourne 2019: BRKDCN-2602
 * Cisco Live San Diego 2019: BRKDCN-2011
 
-Within each sub-directory, is the script and an additional README. It will be documented in that README what each script is expected to achieve and how to use that particular script. 
+> Within each sub-directory, is the script and an additional README. It will be documented in that README what each script is expected to achieve and how to use that particular script. 
 
 
 Created by Michael Petrinovic 2018
