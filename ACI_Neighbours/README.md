@@ -1,15 +1,15 @@
-NEIGHBORS
+Simple application that logs on to the APIC and displays all the CDP/LLDP neighbours.
 
-This script will make the relevant API calls in order to extract the list of ACI Faults currently active within an ACI Environment.
+> It will then produce a simple report for you, that includes all the following; ACI Fabric Node, ACI Fabric Interface, Name of the connected Device, Neighbor Platform, Neighbor Interface
 
-> It will then produce a simple report for you, that includes all the faults, what severity, how many occurrences, possible causes, etc.
 
 It can be executed via the following:
 * -u is your APIC cluster
 * -l is your login username
+*   --protocol {cdp,lldp,both}   Choose if you want to see CDP/LLDP or both. Default is both
 
 ```YAML
-# python aci_faults.py -u https://10.66.80.242 -l mipetrin
+# python aci_neighbours.py -u https://10.66.80.242 -l mipetrin --protocol both
 ```
 
 

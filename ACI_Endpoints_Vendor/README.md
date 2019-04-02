@@ -1,5 +1,3 @@
-ENDPOINT
-
 This script will make the relevant API calls in order to extract the list of Endpoints within your ACI Fabric. It will then also perform an additional OUI MAC Address Lookup to identify what are the hardware vendors of the Endpoints to help identify what is connected to your ACI Fabric.
 
 > It will then produce a simple report for you, that includes all the following; MAC Address, MAC Vendor, IP Address, Interface, Encap, Tenant, App Profile, End Point Group

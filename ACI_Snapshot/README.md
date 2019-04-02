@@ -1,15 +1,15 @@
-SNAPSHOT
+Simple application that will connect to the ACI Fabric and create a Snapshot of the Fabric. It will be stored either on the APIC or in a pre-configured "remote" location
 
-This script will make the relevant API calls in order to extract the list of ACI Faults currently active within an ACI Environment.
-
-> It will then produce a simple report for you, that includes all the faults, what severity, how many occurrences, possible causes, etc.
+> NOTE that the Remote Location must already exist and be correctly configured within the APIC. You then must call it exactly how it is displayed in the APIC
 
 It can be executed via the following:
 * -u is your APIC cluster
 * -l is your login username
+*  --target {apic,remote}
+                        The location where you would like the snapshot to be saved
 
 ```YAML
-# python aci_faults.py -u https://10.66.80.242 -l mipetrin
+# python aci_faults.py -u https://10.66.80.242 -l mipetrin --target apic
 ```
 
 
